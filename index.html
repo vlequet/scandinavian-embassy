@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Scandinavian Embassy, association lausannoise créatrice de concepts F&B événementiels et pop-ups pour festivals, marchés et événements culturels." />
+<title>Scandinavian Embassy</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+          body: ['Karla', 'system-ui', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        },
+        borderRadius: {
+          sm: '2px',
+          DEFAULT: '2px',
+          md: '3px',
+          lg: '4px',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --bg: #EFEDE6;
+    --surface: #FFFFFF;
+    --surface-2: #E7E2D6;
+    --ink: #24211D;
+    --slate: #575F63;
+    --fjord: #2E3A40;
+    --fjord-2: #3C4C54;
+    --fjord-ink: #E9EDEE;
+    --ember: #AE4A26;
+    --ember-hover: #933D1F;
+    --ember-soft: #E7CBBC;
+    --line: #DBD5C6;
+    --focus: #2E3A40;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1917;
+      --surface: #221F1B;
+      --surface-2: #29251F;
+      --ink: #EDE8DF;
+      --slate: #A79F92;
+      --fjord: #1E2A30;
+      --fjord-2: #2B3C44;
+      --fjord-ink: #EDE8DF;
+      --ember: #CB7A4E;
+      --ember-hover: #DD8E62;
+      --ember-soft: #3C2D22;
+      --line: #3A352C;
+      --focus: #CB7A4E;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1B1917;
+    --surface: #221F1B;
+    --surface-2: #29251F;
+    --ink: #EDE8DF;
+    --slate: #A79F92;
+    --fjord: #1E2A30;
+    --fjord-2: #2B3C44;
+    --fjord-ink: #EDE8DF;
+    --ember: #CB7A4E;
+    --ember-hover: #DD8E62;
+    --ember-soft: #3C2D22;
+    --line: #3A352C;
+    --focus: #CB7A4E;
+  }
+
+  * { -webkit-font-smoothing: antialiased; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', system-ui, sans-serif;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  ::selection { background: var(--ember); color: var(--fjord-ink); }
+
+  .balance { text-wrap: balance; }
+
+  .font-display { font-family: 'Schibsted Grotesk', system-ui, sans-serif; }
+  .font-mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ember);
+  }
+
+  .eyebrow-muted {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .hairline { border-color: var(--line); }
+
+  a { color: inherit; }
+
+  .link-underline {
+    background-image: linear-gradient(var(--ember), var(--ember));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.25s ease;
+    padding-bottom: 2px;
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .btn-primary {
+    background: var(--ember);
+    color: #FBF4EE;
+  }
+  .btn-primary:hover {
+    background: var(--ember-hover);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--slate);
+  }
+
+  .card-dashed {
+    background: transparent;
+    border: 1.5px dashed var(--line);
+    border-radius: 3px;
+  }
+
+  .stat-value {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--fjord-2);
+    border-radius: 2px;
+    color: var(--fjord-ink);
+  }
+
+  .field {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0.65rem 0.1rem;
+    font-family: 'Karla', system-ui, sans-serif;
+    font-size: 0.98rem;
+    color: var(--ink);
+    transition: border-color 0.2s ease;
+  }
+  .field::placeholder { color: var(--slate); opacity: 0.7; }
+  .field:focus {
+    outline: none;
+    border-bottom-color: var(--ember);
+  }
+
+  .field-label {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .wood-grain {
+    background-image: repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.035) 0px,
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+  }
+
+  .nav-link {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="min-h-screen">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 backdrop-blur border-b hairline" style="background: color-mix(in srgb, var(--bg) 88%, transparent);">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="font-display font-semibold text-lg tracking-tight">Scandinavian Embassy</a>
+      <nav class="hidden sm:flex items-center gap-8">
+        <a href="#concepts" class="nav-link link-underline">Concepts</a>
+        <a href="#about" class="nav-link link-underline">Équipe</a>
+        <a href="#contact" class="nav-link link-underline">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary sm:hidden !px-4 !py-2 !text-[0.7rem]">Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28">
+      <div class="grid md:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
+        <div>
+          <p class="eyebrow mb-6">Association gastronomique · Lausanne, Suisse</p>
+          <h1 class="font-display font-semibold text-[2.6rem] leading-[1.05] sm:text-6xl balance mb-6">
+            Scandinavian<br />Embassy
+          </h1>
+          <p class="text-xl sm:text-2xl font-display font-medium mb-5 balance" style="color: var(--ember);">
+            Allier la culture culinaire scandinave à la tradition suisse.
+          </p>
+          <p class="text-base sm:text-lg leading-relaxed max-w-xl mb-9" style="color: var(--slate);">
+            Association lausannoise créatrice de concepts F&amp;B événementiels et pop-ups pour festivals, marchés et événements culturels.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#concepts" class="btn btn-primary">Découvrir nos concepts</a>
+            <a href="#contact" class="btn btn-ghost">Réserver un événement</a>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center md:items-end">
+          <svg viewBox="0 0 200 140" class="w-full max-w-xs" style="color: var(--fjord);" aria-hidden="true">
+            <polyline points="6,122 62,32 118,122" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+            <polyline points="78,122 138,54 194,122" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+            <line x1="0" y1="122" x2="200" y2="122" stroke="currentColor" stroke-width="1.2" />
+            <path d="M62,10 C56,18 53,25 57,31 C59,34 65,34 67,31 C71,25 68,18 62,10 Z" fill="none" stroke="var(--ember)" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+          <p class="eyebrow-muted mt-6 text-center md:text-right">46.5197° N · 6.6323° E</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPTS -->
+    <section id="concepts" class="border-t hairline">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        <div class="max-w-2xl mb-14">
+          <p class="eyebrow mb-4">Nos concepts gastronomiques</p>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl balance mb-4">Des concepts F&amp;B pensés pour l'événementiel</h2>
+          <p class="text-base sm:text-lg leading-relaxed" style="color: var(--slate);">
+            L'Ambassade développe régulièrement de nouveaux concepts culinaires nordiques, taillés pour le rythme des grands rassemblements.
+          </p>
+        </div>
+
+        <!-- Thor's Smash Burger — featured -->
+        <article class="wood-grain rounded-md overflow-hidden mb-8" style="background: var(--fjord); color: var(--fjord-ink);">
+          <div class="p-8 sm:p-12">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-1.5 h-1.5 rounded-full" style="background: var(--ember);"></span>
+              <p class="eyebrow" style="color: var(--ember);">Marque active</p>
+            </div>
+
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12">
+              <div>
+                <h3 class="font-display font-semibold text-3xl sm:text-4xl mb-3 balance">Thor's Smash Burger</h3>
+                <p class="text-lg mb-6 balance" style="color: var(--ember-soft, var(--ember));">
+                  Concept culinaire nordique haut débit pour grands événements.
+                </p>
+                <p class="leading-relaxed mb-8" style="color: color-mix(in srgb, var(--fjord-ink) 82%, transparent);">
+                  Le seul smash burger à la viande d'élan suédois sur le marché. Proposé en déclinaison simple, double et triple, accompagné de chips à l'aneth.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span class="tag">Simple</span>
+                  <span class="tag">Double</span>
+                  <span class="tag">Triple</span>
+                </div>
+
+                <p class="field-label" style="color: color-mix(in srgb, var(--fjord-ink) 60%, transparent);">Formats de déploiement</p>
+                <p class="leading-relaxed" style="color: color-mix(in srgb, var(--fjord-ink) 82%, transparent);">
+                  Adaptable en stand, chalet ou food truck, esthétique bois sombre et inspiration nordique, ambiance feu.
+                </p>
+              </div>
+
+              <div class="border-t lg:border-t-0 lg:border-l pt-8 lg:pt-0 lg:pl-12" style="border-color: var(--fjord-2);">
+                <p class="eyebrow-muted mb-6" style="color: color-mix(in srgb, var(--fjord-ink) 55%, transparent);">Preuve de concept</p>
+                <div class="space-y-7">
+                  <div>
+                    <p class="stat-value text-4xl sm:text-5xl font-semibold">1 000<span class="text-xl align-top">/j</span></p>
+                    <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--fjord-ink) 65%, transparent);">Burgers en débit maximal, testé et approuvé</p>
+                  </div>
+                  <div>
+                    <p class="stat-value text-4xl sm:text-5xl font-semibold">6 000<span class="text-xl align-top">+</span></p>
+                    <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--fjord-ink) 65%, transparent);">Burgers servis au Paléo Festival 2026</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Future concepts -->
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="card-dashed p-8">
+            <p class="eyebrow-muted mb-3">À venir</p>
+            <h4 class="font-display font-semibold text-xl mb-2">Nouveau concept nordique</h4>
+            <p class="leading-relaxed" style="color: var(--slate);">Un prochain concept F&amp;B est en préparation au sein de l'Ambassade. Détails communiqués prochainement.</p>
+          </div>
+          <div class="card-dashed p-8">
+            <p class="eyebrow-muted mb-3">À venir</p>
+            <h4 class="font-display font-semibold text-xl mb-2">Projet pop-up saisonnier</h4>
+            <p class="leading-relaxed" style="color: var(--slate);">Une déclinaison saisonnière pensée pour les marchés et fêtes locales, en cours de développement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="border-t hairline">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        <div class="grid md:grid-cols-[0.9fr_1.1fr] gap-14">
+          <div>
+            <p class="eyebrow mb-4">L'équipe</p>
+            <h2 class="font-display font-semibold text-3xl sm:text-4xl balance">Une ambassade portée par la scène gastronomique lausannoise</h2>
+          </div>
+          <div>
+            <p class="text-lg leading-relaxed mb-8" style="color: var(--slate);">
+              Scandinavian Embassy est fondée par une équipe de restaurateurs et de chefs expérimentés de la scène gastronomique de Lausanne, à l'origine d'établissements reconnus de la ville.
+            </p>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 border-t hairline">
+              <span class="font-display font-semibold text-lg">Njørden</span>
+              <span style="color: var(--line);">·</span>
+              <span class="font-display font-semibold text-lg">La Station</span>
+              <span style="color: var(--line);">·</span>
+              <span class="font-display font-semibold text-lg">Maza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="border-t hairline">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
+          <div>
+            <p class="eyebrow mb-4">Réservation &amp; inscription événements</p>
+            <h2 class="font-display font-semibold text-3xl sm:text-4xl balance mb-6">Organisateurs, parlons de votre événement</h2>
+            <p class="text-lg leading-relaxed mb-10" style="color: var(--slate);">
+              Directeurs de festivals, responsables de marchés, organisateurs d'événements culturels : notre équipe conçoit un concept F&amp;B sur mesure pour votre public.
+            </p>
+
+            <div class="space-y-5">
+              <div>
+                <p class="field-label">E-mail</p>
+                <a href="mailto:info@scandinavianembassy.ch" class="font-display text-xl font-medium link-underline">info@scandinavianembassy.ch</a>
+              </div>
+              <div>
+                <p class="field-label">Localisation</p>
+                <p class="font-display text-xl font-medium">Lausanne, Suisse</p>
+              </div>
+            </div>
+          </div>
+
+          <form action="mailto:info@scandinavianembassy.ch" method="post" enctype="text/plain" class="card p-8 sm:p-10">
+            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7 mb-7">
+              <div>
+                <label class="field-label" for="orgname">Nom / Organisme</label>
+                <input class="field" type="text" id="orgname" name="Nom / Organisme" placeholder="Votre nom ou organisme" required />
+              </div>
+              <div>
+                <label class="field-label" for="eventname">Nom de l'événement</label>
+                <input class="field" type="text" id="eventname" name="Nom de l'événement" placeholder="Ex. Marché de Noël" required />
+              </div>
+              <div>
+                <label class="field-label" for="datelieu">Date &amp; lieu</label>
+                <input class="field" type="text" id="datelieu" name="Date & lieu" placeholder="Ex. 12 décembre, Lausanne" required />
+              </div>
+              <div>
+                <label class="field-label" for="email">E-mail</label>
+                <input class="field" type="email" id="email" name="E-mail" placeholder="vous@exemple.ch" required />
+              </div>
+            </div>
+            <div class="mb-8">
+              <label class="field-label" for="message">Message</label>
+              <textarea class="field" id="message" name="Message" rows="4" placeholder="Décrivez votre événement, le public attendu et vos besoins."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full sm:w-auto">Envoyer la demande</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t hairline">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono text-xs" style="color: var(--slate);">© Scandinavian Embassy, Lausanne, Suisse</p>
+      <p class="font-mono text-xs" style="color: var(--slate);">info@scandinavianembassy.ch</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
