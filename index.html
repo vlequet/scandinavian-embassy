@@ -423,7 +423,10 @@
             </div>
           </div>
 
-          <form action="mailto:info@scandinavianembassy.ch" method="post" enctype="text/plain" class="card p-8 sm:p-10">
+          <form id="event-form" action="https://formsubmit.co/ajax/info@scandinavianembassy.ch" method="POST" class="card p-8 sm:p-10">
+            <input type="hidden" name="_subject" value="Nouvelle demande, formulaire Scandinavian Embassy" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7 mb-7">
               <div>
                 <label class="field-label" for="orgname">Nom / Organisme</label>
@@ -446,7 +449,8 @@
               <label class="field-label" for="message">Message</label>
               <textarea class="field" id="message" name="Message" rows="4" placeholder="Décrivez votre événement, le public attendu et vos besoins."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-full sm:w-auto">Envoyer la demande</button>
+            <button type="submit" id="event-form-submit" class="btn btn-primary w-full sm:w-auto">Envoyer la demande</button>
+            <p id="event-form-status" class="text-sm mt-4" style="display:none;"></p>
           </form>
         </div>
       </div>
@@ -463,5 +467,42 @@
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var form = document.getElementById('event-form');
+    if (!form) return;
+    var status = document.getElementById('event-form-status');
+    var submitBtn = document.getElementById('event-form-submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+      status.style.display = 'none';
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('send-failed');
+          form.reset();
+          status.textContent = "Merci, votre demande a bien été envoyée. Nous revenons vers vous rapidement.";
+          status.style.color = 'var(--ember)';
+        })
+        .catch(function () {
+          status.textContent = "Une erreur est survenue lors de l'envoi. Écrivez nous directement à info@scandinavianembassy.ch.";
+          status.style.color = '#B23B2E';
+        })
+        .finally(function () {
+          status.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer la demande';
+        });
+    });
+  })();
+</script>
 </body>
 </html>
